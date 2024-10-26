@@ -30,10 +30,15 @@
    console.log("You chose:", userInput); */
 
    function getHumanChoice(message) {
-    let input = prompt("rock, paper, or scissors").toLowerCase();
+    let input; 
+    do { 
+        input = prompt(message || "rock, paper, or scissors").toLowerCase();
+    } while (!['rock', 'paper', 'scissors'].includes(input));
     return input;
-   };
-   console.log(getHumanChoice("Please Choose:"));
+}
+
+console.log(getHumanChoice("Please choose: rock, paper, or scissors"));
+
 
 
 
