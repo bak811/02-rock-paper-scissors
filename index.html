@@ -10,6 +10,7 @@
 <script>
     let humanScore = 0;
     let computerScore = 0;
+    let draw = 0;
 
  
    function getComputerChoice() {
@@ -20,29 +21,55 @@
             case 2:
                 return "paper";
             case 3:
-                return "scissor";
+                return "scissors";
     }
    }
    const result = getComputerChoice();
    console.log(result);
 
-   /*let userInput = prompt("rock, paper, or scissors");
-   console.log("You chose:", userInput); */
-
    function getHumanChoice(message) {
     let input; 
     do { 
-        input = prompt(message || "rock, paper, or scissors").toLowerCase();
+        input = prompt(message || "Please choose: rock, paper, or scissors").toLowerCase();
     } while (!['rock', 'paper', 'scissors'].includes(input));
     return input;
 }
 
-console.log(getHumanChoice("Please choose: rock, paper, or scissors"));
+function determineWinner(humanChoice, computerChoice) {
+    if (humanChoice === computerChoice) {
+        return "It's a tie!";
+    } else if (
+        (humanChoice === 'rock' && computerChoice === 'scissors') ||
+        (humanChoice === 'scissors' && computerChoice === 'paper') ||
+        (humanChoice === 'paper' && computerChoice === 'rock')
+    ) {
+        return "You win!";
+    } else {
+        return "You lose!";
+    }
+}
+
+function playRound () {
+    const humanChoice = getHumanChoice();
+    const computerChoice  = getComputerChoice();
+    console.log (`You chose : ${humanChoice}`);
+    console.log (`Computer chose: ${computerChoice}`);
+
+const result = determineWinner(humanChoice, computerChoice); 
+console.log(result);
+
+    if (result === "You win!") {humanScore++;
+    }
+    else if (result === "You lose!") {computerScore++;
+    }
+    else {draw++;
+    }
+    console.log(`Score - You: ${humanScore}, Computer: ${computerScore}, Draws: ${draw}`);
+}
 
 
-
-
-
+    for (let i = 0; i < 5; i++)
+        playRound();
 
 
 </script>
