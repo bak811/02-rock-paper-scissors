@@ -8,11 +8,12 @@
 <body>
     
 <script>
+    /* scoreboard*/
     let humanScore = 0;
     let computerScore = 0;
     let draw = 0;
 
- 
+/* Random AI generated choices*/
    function getComputerChoice() {
     const randomNumber = Math.floor(Math.random() *3) +1;
     switch (randomNumber) {
@@ -25,8 +26,8 @@
     }
    }
    const result = getComputerChoice();
-   console.log(result);
 
+   /* User input choice*/
    function getHumanChoice(message) {
     let input; 
     do { 
@@ -35,6 +36,7 @@
     return input;
 }
 
+/* winning logic */
 function determineWinner(humanChoice, computerChoice) {
     if (humanChoice === computerChoice) {
         return "It's a tie!";
@@ -49,6 +51,7 @@ function determineWinner(humanChoice, computerChoice) {
     }
 }
 
+/* play round*/
 function playRound () {
     const humanChoice = getHumanChoice();
     const computerChoice  = getComputerChoice();
@@ -66,10 +69,13 @@ console.log(result);
     }
     console.log(`Score - You: ${humanScore}, Computer: ${computerScore}, Draws: ${draw}`);
 }
-
-
-    for (let i = 0; i < 5; i++)
+/* total game rounds (first to 5)*/
+while (humanScore < 5 && computerScore < 5) {
         playRound();
+    }
+
+    console.log("Game Over!");
+    console.log(`Final Score - You: ${humanScore}, Computer: ${computerScore}, Draws: ${draw}`);
 
 
 </script>
